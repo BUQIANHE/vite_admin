@@ -28,11 +28,11 @@ export default defineConfig({
         filepath: './.eslintrc-auto-import.json',
         globalsPropValue: true
       },
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver()]
     }),
     Components({
       resolvers: [ElementPlusResolver()]
-    }),
+    })
   ],
   resolve: {
     //设置别名
@@ -42,7 +42,8 @@ export default defineConfig({
   },
   server: {
     port: 5051, //启动端口
-    hmr: { // 热更新的ip和端口
+    hmr: {
+      // 热更新的ip和端口
       host: '127.0.0.1',
       port: 5051
     },

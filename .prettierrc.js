@@ -15,5 +15,4 @@ module.exports = {
   bracketSpacing: true,
   // 换行符使用 auto
   endOfLine: 'auto'
-
 }

@@ -27,4 +27,4 @@ module.exports = {
   allowCustomScopes: true,
   skipQuestions: ['body', 'footer'],
   subjectLimit: 72
-};
+}
