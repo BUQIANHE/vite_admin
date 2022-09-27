@@ -1,0 +1,58 @@
+#app {
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.jcc {
+  justify-content: center;
+}
+
+.jfs {
+  justify-content: flex-start;
+}
+
+.jfe {
+  justify-content: flex-end;
+}
+
+.jsb {
+  justify-content: space-between;
+}
+
+.jsa {
+  justify-content: space-around;
+}
+
+.jse {
+  justify-content: space-evenly;
+}
+
+.aic {
+  align-items: center;
+}
+
+.afs {
+  align-items: flex-start;
+}
+
+.afe {
+  align-items: flex-end;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.self {
+  align-self: normal;
+}

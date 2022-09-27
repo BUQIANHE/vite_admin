@@ -1,11 +1,5 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-
-const routes: RouteRecordRaw[] = [
-  {
-    path: '',
-    redirect: '/login'
-  }
-]
+import { createRouter, createWebHashHistory } from 'vue-router'
+import routes from './routes'
 
 const router = createRouter({
   history: createWebHashHistory(),
