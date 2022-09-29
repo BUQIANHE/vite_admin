@@ -6,6 +6,7 @@ import { login as userLogin, logout as userLogout } from '@/api/login'
 import piniaPersistConfig from '@/hooks/piniaPersist'
 import router from '@/router'
 import routes from '@/router/routes'
+import { Layout } from '@/router/constants'
 
 const useAppStore = defineStore('app', {
   state: (): API.AppState => ({
@@ -76,8 +77,9 @@ const useAppStore = defineStore('app', {
           if (res.code === 200) {
             res.data.forEach((item) => {
               if (item.component === 'Layout' && item?.children?.length) {
+                item.component = Layout
                 item.children.forEach((key) => {
-                  key.component = `@/view/${key.component}`
+                  key.component = () => import(`@/views/${key.component}.vue`)
                 })
               }
             })

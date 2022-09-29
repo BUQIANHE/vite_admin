@@ -4,5 +4,5 @@
   "isDark": false,
   "menuCollapse": false,
   "footer": true,
-  "menuFromServer": true
+  "menuFromServer": false
 }

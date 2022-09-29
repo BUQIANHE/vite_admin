@@ -1,9 +1,8 @@
 import { Layout } from '../constants'
 
 export default {
-  path: '/user',
+  path: '/personal',
   component: Layout,
-  redirect: '/user/setting',
   alwaysShow: false,
   hidden: true,
   meta: {
@@ -13,8 +12,8 @@ export default {
   },
   children: [
     {
-      path: '/user/setting',
-      name: 'userSetting',
+      path: '/personal_settings',
+      name: 'personalSettings',
       component: () => import('@/views/user/Setting.vue'),
       meta: {
         noCache: false,

@@ -8,7 +8,7 @@ import pinia from './pinia'
 import router from '@/router'
 
 import 'virtual:svg-icons-register'
-import svgIcon from '@/components/SvgIcon/index.vue'
+import svgIcon from '@/components/SvgIcon/SvgIcon.vue'
 
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import 'element-plus/dist/index.css'

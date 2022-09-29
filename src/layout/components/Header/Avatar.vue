@@ -22,7 +22,7 @@ const handleMessageBox = () => {
 }
 
 const handleUserSetting = () => {
-  router.push({ path: '/user/setting' })
+  router.push({ path: '/personal_settings' })
 }
 </script>
 

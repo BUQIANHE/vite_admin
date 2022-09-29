@@ -12,3 +12,11 @@ export enum LoginAPI {
   LOGIN = '/login',
   LOGOUT = '/logout'
 }
+
+export enum SysUserAPI {
+  LIST = '/system/user/list',
+  ADD = '/system/user',
+  UPDATE = '/system/user',
+  DETAIL = '/system/user/',
+  DELTE = '/system/user/'
+}

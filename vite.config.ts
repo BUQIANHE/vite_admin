@@ -56,7 +56,7 @@ export default defineConfig({
   },
   server: {
     port: 5051, //启动端口
-    host: '0.0.0.0',
+    // host: '0.0.0.0',
     hmr: {
       // 热更新的ip和端口
       host: '127.0.0.1',
@@ -65,7 +65,7 @@ export default defineConfig({
     // 设置 https 代理
     proxy: {
       '/api': {
-        target: 'http://192.168.50.70:9899',
+        target: 'http://192.168.50.78:9899',
         // target: 'http://192.168.1.4:9899',
         changeOrigin: true,
         rewrite: (path: string) => path.replace(/^\/api/, '')

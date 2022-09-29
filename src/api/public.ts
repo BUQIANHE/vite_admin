@@ -18,10 +18,10 @@ export const getMenuList = () => {
   return request.get<API.MenuList>(MENULIST)
 }
 
-// export const getDictsListData = (type: string) => {
-//   return request.get<any>(`${DICTS}${type}`)
-// }
+export const getDictsListData = (type: string) => {
+  return request.get<any>(`${DICTS}${type}`)
+}
 
-// export const getDeptTree = () => {
-//   return request.get<any>(DEPT)
-// }
+export const getDeptTree = () => {
+  return request.get<API.DepartmentTree>(DEPT)
+}

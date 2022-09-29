@@ -8,6 +8,13 @@ declare namespace API {
     data?: T
   }
 
+  export interface FormParams {
+    // 新增修改表单和删除表格项参数
+    id?: number
+    isNew?: boolean
+    isRead?: boolean
+  }
+
   interface AppState {
     token: string
     isAuthenticated?: boolean
@@ -69,5 +76,21 @@ declare namespace API {
 
   interface LoginResult extends Result {
     token: string
+  }
+
+  interface PublicState {
+    department?: Partial<DepartmentItem>[]
+  }
+
+  interface DepartmentItem {
+    deptId: number
+    deptName: string
+    parentId?: number
+    parentName?: string
+    children?: DepartmentItem[]
+  }
+
+  interface DepartmentTree extends Result {
+    data: DepartmentItem[]
   }
 }
