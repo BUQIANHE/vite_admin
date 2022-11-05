@@ -16,6 +16,7 @@ export type FormType =
   | 'rate'
   | 'select'
   | 'tree-select'
+  | 'tree'
   | 'option'
   | 'slider'
   | 'switch'

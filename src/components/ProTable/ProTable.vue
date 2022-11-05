@@ -1,5 +1,5 @@
 <script lang="ts" name="ProTable" setup>
-import { setTreeData, titleCase } from '@/utils'
+import { setTreeData } from '@/utils'
 import { ColumnProps, PageProps } from './types'
 import { Refresh } from '@element-plus/icons-vue'
 
@@ -139,7 +139,6 @@ defineExpose({
       ref="tableRef"
       height="600"
       class="table_main"
-      style="width: 100%"
       :data="tableData"
       :row-key="rowKey"
       @selection-change="handleSelectionChange"
@@ -160,7 +159,7 @@ defineExpose({
             :type="col.colType"
             :label="col.label"
           >
-            <slot :name="`table${titleCase(col.prop!)}`" :row="scope.row" />
+            <slot :name="col.prop!" :row="scope.row" />
           </el-table-column>
           <el-table-column v-else v-bind="col.attrs" :prop="col.prop" :label="col.label" resizable>
             <!-- 自定义头部内容(tsx) -->
@@ -169,17 +168,19 @@ defineExpose({
             </template>
 
             <template #default="scope">
-              <slot :name="`table${titleCase(col.prop!)}`" :row="scope.row">
+              <slot :name="col.prop!" :row="scope.row">
                 <span>{{ scope.row[col.prop!] }}</span>
               </slot>
             </template>
           </el-table-column>
         </template>
       </template>
+
       <template #empty>
         <el-empty description="暂无数据" />
       </template>
     </el-table>
+
     <template v-if="props.isPages">
       <el-pagination
         v-model:currentPage="pagination.current"
@@ -217,6 +218,7 @@ defineExpose({
 
   .table_main {
     flex: 1;
+    width: 100%;
 
     :deep(.el-table__inner-wrapper) {
       height: 100% !important;

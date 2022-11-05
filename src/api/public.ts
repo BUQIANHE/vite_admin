@@ -1,6 +1,6 @@
 import request from '@/service'
 import { PublicAPI } from './apiEnums'
-const { USERINFO, MENULIST, DICTS, DEPT } = PublicAPI
+const { USERINFO, MENULIST, DICTS, DEPT, MENUTREE, PASSWORD } = PublicAPI
 
 /**
  * 获取用户信息 和 使用权限
@@ -8,6 +8,10 @@ const { USERINFO, MENULIST, DICTS, DEPT } = PublicAPI
  */
 export const getUserInfo = () => {
   return request.get<API.UserInfoResult>(USERINFO)
+}
+
+export const updatePassword = (params: { userId: number; password: string }) => {
+  return request.put<any>(PASSWORD, params)
 }
 
 /**
@@ -24,4 +28,12 @@ export const getDictsListData = (type: string) => {
 
 export const getDeptTree = () => {
   return request.get<API.DepartmentTree>(DEPT)
+}
+
+/**
+ * 获取权限菜单
+ * @returns
+ */
+export const getMenuTree = () => {
+  return request.get<any>(MENUTREE)
 }

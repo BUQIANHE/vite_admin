@@ -4,15 +4,21 @@ declare namespace API {
     msg?: string
   }
 
+  interface Options {
+    label: string
+    value: string | number
+    children?: Options[]
+  }
+
   interface ResultData<T = any> extends Result {
     data?: T
   }
 
   export interface FormParams {
     // 新增修改表单和删除表格项参数
-    id?: number
-    isNew?: boolean
-    isRead?: boolean
+    id?: number // 详情ID
+    isNew?: boolean // 新增 默认true false => 修改
+    isRead?: boolean // 查看
   }
 
   interface AppState {
@@ -80,6 +86,8 @@ declare namespace API {
 
   interface PublicState {
     department?: Partial<DepartmentItem>[]
+    useStatus?: Options[]
+    [x: string]: any
   }
 
   interface DepartmentItem {

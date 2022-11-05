@@ -4,7 +4,11 @@ import piniaPersistConfig from '@/hooks/piniaPersist'
 
 const usePublicStore = defineStore('public', {
   state: (): API.PublicState => ({
-    department: []
+    department: [],
+    useStatus: [
+      { label: '正常', value: 0 },
+      { label: '停用', value: 1 }
+    ]
   }),
 
   actions: {
