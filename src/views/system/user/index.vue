@@ -120,7 +120,8 @@ const columns: Partial<ColumnProps>[] = [
     hideInForm: true,
     attrs: {
       fixed: 'right',
-      width: 270
+      align: 'center',
+      width: 280
     }
   }
 ]
@@ -128,7 +129,7 @@ const columns: Partial<ColumnProps>[] = [
 const proTable = ref()
 
 // 是否批量删除
-// const isBatchDelect = computed((): boolean => (proTable.value?.ids?.length ? true : false))
+// const isBatchDelect = computed((): boolean => (proTable.value?.ids?.length ? false : true))
 
 // 可显示的表单项
 const formColumns = computed((): any[] => columns.filter((item) => !item.hideInForm))
