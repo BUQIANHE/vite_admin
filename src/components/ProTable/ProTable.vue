@@ -58,13 +58,17 @@ const watchTableColumns = () => {
 // 获取表格列表数据
 const fetchTableListData = async () => {
   try {
+    const pages = props.isPages
+      ? {
+          current: pagination.current,
+          size: pagination.size
+        }
+      : {}
     const params = {
       ...searchRef.value.query,
-      current: pagination.current,
-      size: pagination.size
+      ...pages
     }
     const res = await props.request(params)
-
     pagination.total = res.total
     tableData.value = props.isTreeData
       ? setTreeData(res[props.dataKey], props.rowKey)
@@ -141,8 +145,8 @@ defineExpose({
       height="600"
       class="table_main"
       :data="tableData"
-      :row-key="rowKey"
-      @selection-change="handleSelectionChange"
+      :row-key="props.rowKey"
+      @selection-change="!isTreeData ? handleSelectionChange : null"
     >
       <template v-if="tableColumns?.length">
         <template v-for="col in tableColumns" :key="col.prop!">
@@ -182,7 +186,7 @@ defineExpose({
       </template>
     </el-table>
 
-    <template v-if="props.isPages">
+    <template v-if="isPages">
       <el-pagination
         v-model:currentPage="pagination.current"
         v-model:page-size="pagination.size"

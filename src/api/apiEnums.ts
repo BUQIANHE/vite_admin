@@ -32,3 +32,11 @@ export enum SysRoleAPI {
   MENUTREE = '/system/menu/roleMenuTreeselect/',
   DOWNLOAD = '/system/role/export'
 }
+
+export enum SysMenumAPI {
+  LIST = '/system/menu/list',
+  ADD = '/system/menu',
+  UPDATE = '/system/menu',
+  DETAIL = '/system/menu/',
+  DELTE = '/system/menu/'
+}

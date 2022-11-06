@@ -5,6 +5,11 @@ import piniaPersistConfig from '@/hooks/piniaPersist'
 const usePublicStore = defineStore('public', {
   state: (): API.PublicState => ({
     department: [],
+    menuType: [
+      { label: '目录', value: 'M' },
+      { label: '菜单', value: 'C' },
+      { label: '按钮', value: 'F' }
+    ],
     useStatus: [
       { label: '正常', value: 0 },
       { label: '停用', value: 1 }

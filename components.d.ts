@@ -50,6 +50,7 @@ declare module '@vue/runtime-core' {
     FormItem: typeof import('./src/components/FormItem/FormItem.vue')['default']
     FullScreen: typeof import('./src/layout/components/Header/FullScreen.vue')['default']
     Header: typeof import('./src/layout/components/Header/Header.vue')['default']
+    IconItem: typeof import('./src/components/IconItem/IconItem.vue')['default']
     LogoTitle: typeof import('./src/layout/components/Aside/LogoTitle.vue')['default']
     Menu: typeof import('./src/layout/components/Aside/Menu.vue')['default']
     Notice: typeof import('./src/layout/components/Header/Notice.vue')['default']

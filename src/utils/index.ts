@@ -64,7 +64,7 @@ export const setTreeData = (
 
   const cloneData = JSON.parse(JSON.stringify(data))
 
-  const treeData = cloneData.filter((father: { [x: string]: any; children: string }) => {
+  const treeData = cloneData.filter((father: { [x: string]: any; children: any }) => {
     const branchArr = cloneData.filter((child: { [x: string]: any }) => {
       return father[id] === child[parentId!]
     })
