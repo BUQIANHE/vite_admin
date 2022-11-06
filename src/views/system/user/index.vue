@@ -128,7 +128,7 @@ const columns: Partial<ColumnProps>[] = [
 const proTable = ref()
 
 // 是否批量删除
-const isBatchDelect = computed((): boolean => (proTable.value?.ids?.length ? true : false))
+// const isBatchDelect = computed((): boolean => (proTable.value?.ids?.length ? true : false))
 
 // 可显示的表单项
 const formColumns = computed((): any[] => columns.filter((item) => !item.hideInForm))
@@ -153,10 +153,11 @@ const isAdd = ref<boolean>(false)
 const open = async (params: API.FormParams) => {
   // 重置表单的model参数
   formColumns.value.map((item) => (formModel.model[item.prop] = item.value))
-  // 查看修改调用详情接口
-  if (params?.id) await fetchFormItemDetail(params?.id)
   readonly.value = params?.isRead || false
   isAdd.value = params?.isNew || false
+
+  // 查看修改调用详情接口
+  if (params?.id) await fetchFormItemDetail(params?.id)
 
   let props = {
     formColumns,
