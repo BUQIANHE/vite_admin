@@ -79,3 +79,46 @@ export const setTreeData = (
   })
   return treeData !== '' ? treeData : data
 }
+
+export const filterEnums = (value: any, enumData: any[] = []) => {
+  const filterData = enumData.find((item) => item.value === value)
+  return filterData ? filterData?.label : '--'
+}
+
+// export const forbidTree = (data: any) => {
+//   for (const key in data) {
+//     data[key].disabled = true
+//     if (data[key]?.children?.length) forbidTree(data[key].children)
+//   }
+//   return data
+// }
+
+export const BASEURL = '/api'
+// import.meta.env.BASE_URL
+
+/**
+ * 静态链接导出
+ * @param fileName 导出文件名
+ */
+export const staticLinksExport = (fileName: string) => {
+  window.location.href = `${BASEURL}/common/download?fileName=${encodeURI(fileName)}&delete=${true}`
+}
+
+/**
+ * 下载导出
+ * @param data 接口返回的文件数据
+ */
+export const exportExecl = (data: any) => {
+  const fileName = data.fileName
+
+  const url = window.URL.createObjectURL(data)
+  const link = document.createElement('a')
+
+  link.style.display = 'none'
+  link.href = url
+  link.download = decodeURIComponent(fileName)
+  document.body.appendChild(link)
+  link.click()
+  // 撤销下载链接
+  window.URL.revokeObjectURL(url)
+}

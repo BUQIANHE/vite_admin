@@ -29,5 +29,6 @@ export enum SysRoleAPI {
   UPDATE = '/system/role',
   DETAIL = '/system/role/',
   DELTE = '/system/role/',
-  MENUTREE = '/system/menu/roleMenuTreeselect/'
+  MENUTREE = '/system/menu/roleMenuTreeselect/',
+  DOWNLOAD = '/system/role/export'
 }

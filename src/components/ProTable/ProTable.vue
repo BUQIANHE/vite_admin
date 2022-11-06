@@ -117,7 +117,8 @@ const handleCurrentChange = (val: number) => {
 
 defineExpose({
   ids,
-  search
+  search,
+  searchRef
 })
 </script>
 
