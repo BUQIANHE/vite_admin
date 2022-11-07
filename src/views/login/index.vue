@@ -30,6 +30,10 @@ onMounted(() => {
   fetchCaptcha()
 })
 
+// onActivated(() => {
+//   fetchCaptcha()
+// })
+
 const fetchCaptcha = async () => {
   formParams.code = ''
   formParams.uuid = ''

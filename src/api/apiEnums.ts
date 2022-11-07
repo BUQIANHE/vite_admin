@@ -15,6 +15,7 @@ export enum LoginAPI {
   LOGOUT = '/logout'
 }
 
+// 用户管理
 export enum SysUserAPI {
   LIST = '/system/user/list',
   ADD = '/system/user',
@@ -23,6 +24,7 @@ export enum SysUserAPI {
   DELTE = '/system/user/'
 }
 
+// 角色管理
 export enum SysRoleAPI {
   LIST = '/system/role/list',
   ADD = '/system/role',
@@ -33,10 +35,20 @@ export enum SysRoleAPI {
   DOWNLOAD = '/system/role/export'
 }
 
-export enum SysMenumAPI {
+// 菜单管理
+export enum SysMenuAPI {
   LIST = '/system/menu/list',
   ADD = '/system/menu',
   UPDATE = '/system/menu',
   DETAIL = '/system/menu/',
   DELTE = '/system/menu/'
+}
+
+// 部门管理
+export enum SysDeptAPI {
+  LIST = '/system/dept/list',
+  ADD = '/system/dept',
+  UPDATE = '/system/dept',
+  DETAIL = '/system/dept/',
+  DELTE = '/system/dept/'
 }

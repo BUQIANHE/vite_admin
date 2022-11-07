@@ -1,6 +1,6 @@
 import request from '@/service'
-import { SysMenumAPI } from './apiEnums'
-const { LIST, ADD, UPDATE, DETAIL, DELTE } = SysMenumAPI
+import { SysMenuAPI } from './apiEnums'
+const { LIST, ADD, UPDATE, DETAIL, DELTE } = SysMenuAPI
 
 /** 封装 Protable 组件测试用的 */
 export const getSysMenuList = (params: any) => {

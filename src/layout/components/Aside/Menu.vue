@@ -6,7 +6,9 @@ const route = useRoute()
 
 const { themeColor, menuCollapse } = toRefs(appStore.golbalSettings)
 const list = appStore.menuList.filter((item) => item?.alwaysShow) as API.MenuListItem[]
-const activeMenu = route.path
+
+const activeMenu = ref<string>('/index')
+activeMenu.value = route.path
 </script>
 
 <template>
@@ -16,9 +18,10 @@ const activeMenu = route.path
     background-color="#191a20"
     unique-opened
     :router="true"
-    :active-text-color="activeMenu"
+    :active-text-color="themeColor"
     :collapse="menuCollapse"
     :collapse-transition="false"
+    :default-active="activeMenu"
   >
     <SubMenu :menu-list="list" :active-clr="themeColor" />
   </el-menu>
