@@ -215,6 +215,9 @@ const submit = async (formModel: any) => {
       ElMessage.success(res?.msg)
       proTable.value.search()
       formItemRef.value!.close()
+
+      // 重新获取表单里的菜单树数据
+      formSelectTreeData()
     }
   } catch (err) {
     console.log(err)

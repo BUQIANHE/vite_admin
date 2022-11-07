@@ -160,10 +160,6 @@ const fetchFormItemDetail = async (id: number) => {
   }
 }
 
-// const submit = () => {
-//   console.log('submit')
-// }
-
 // 删除表格数据
 const openMsgBox = async (ids: number[]) => {
   await useTooptip(deleteSysDeptItem, ids, '删除所选数据')
