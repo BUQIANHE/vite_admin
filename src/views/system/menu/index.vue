@@ -4,7 +4,7 @@ import { DrawerExpose } from '@/components/FormItem/types'
 import { Plus, Delete, Edit } from '@element-plus/icons-vue'
 import { useTooptip } from '@/hooks/useTooltip'
 import { usePublicStore } from '@/pinia'
-import { filterEnums, setTreeData } from '@/utils'
+import { filterEnums } from '@/utils'
 import {
   getSysMenuList,
   addSysMenuItem,
@@ -17,29 +17,7 @@ import { SysState } from '@/injectKey'
 
 const publicStore = usePublicStore()
 
-const treeData = ref<any>([])
-const formSelectTreeData = async () => {
-  try {
-    const res = await getSysMenuList({})
-    let treeObj = {
-      menuId: 0,
-      menuName: '主目录',
-      children: setTreeData(res.data, 'menuId')
-    }
-    treeObj = JSON.parse(
-      JSON.stringify(treeObj)
-        .replace(/menuId/g, 'value')
-        .replace(/menuName/g, 'label')
-    )
-    treeData.value.push(treeObj)
-  } catch (err) {
-    console.log(err)
-  }
-}
-
-onMounted(() => {
-  formSelectTreeData()
-})
+publicStore.fetchMenuTree()
 
 const columns: Partial<ColumnProps>[] = [
   {
@@ -50,7 +28,7 @@ const columns: Partial<ColumnProps>[] = [
     showInSearch: false,
     hideInTable: true,
     attrs: {
-      data: treeData.value,
+      data: publicStore.allMenuTree,
       checkStrictly: true,
       defaultExpandedKeys: [0]
     }
@@ -215,9 +193,6 @@ const submit = async (formModel: any) => {
       ElMessage.success(res?.msg)
       proTable.value.search()
       formItemRef.value!.close()
-
-      // 重新获取表单里的菜单树数据
-      formSelectTreeData()
     }
   } catch (err) {
     console.log(err)

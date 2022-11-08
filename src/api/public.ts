@@ -35,5 +35,5 @@ export const getDeptTree = () => {
  * @returns
  */
 export const getMenuTree = () => {
-  return request.get<any>(MENUTREE)
+  return request.get<API.MenuTree>(MENUTREE)
 }

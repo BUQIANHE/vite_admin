@@ -86,6 +86,7 @@ declare namespace API {
 
   interface PublicState {
     department?: Partial<DepartmentItem>[]
+    menu?: Partial<MenuItem>[]
     useStatus?: Options[]
     [x: string]: any
   }
@@ -100,5 +101,15 @@ declare namespace API {
 
   interface DepartmentTree extends Result {
     data: DepartmentItem[]
+  }
+
+  interface MenuItem {
+    id: number
+    label: string
+    children?: MenuItem[]
+  }
+
+  interface MenuTree extends Result {
+    data: MenuItem[]
   }
 }

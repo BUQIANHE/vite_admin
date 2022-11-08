@@ -1,10 +1,12 @@
 import { defineStore } from 'pinia'
-import { getDeptTree } from '@/api/public'
+import { getDeptTree, getMenuTree } from '@/api/public'
 import piniaPersistConfig from '@/hooks/piniaPersist'
 
 const usePublicStore = defineStore('public', {
   state: (): API.PublicState => ({
     department: [],
+    menu: [],
+    allMenuTree: [],
     menuType: [
       { label: '目录', value: 'M' },
       { label: '菜单', value: 'C' },
@@ -17,12 +19,31 @@ const usePublicStore = defineStore('public', {
   }),
 
   actions: {
-    /** 获取部门数据 */
+    /** 获取部门树数据 */
     async fetchDeptTree() {
       const res = await getDeptTree()
       if (res?.code === 200) {
-        const data = JSON.parse(JSON.stringify(res.data[0]).replace(/id/g, 'value'))
-        this.department = [data]
+        console.log(res)
+        this.department = res.data.map((item) => {
+          return JSON.parse(JSON.stringify(item).replace(/id/g, 'value'))
+        })
+      }
+    },
+
+    /** 获取菜单树数据 */
+    async fetchMenuTree() {
+      const res = await getMenuTree()
+      if (res?.code === 200) {
+        this.menu = res.data.map((item) => {
+          return JSON.parse(JSON.stringify(item).replace(/id/g, 'value'))
+        })
+        this.allMenuTree = [
+          {
+            label: '主目录',
+            value: 0,
+            children: this.menu
+          }
+        ]
       }
     }
   },
