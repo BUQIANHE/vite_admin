@@ -15,17 +15,19 @@ const { menuCollapse } = toRefs(appStore.golbalSettings)
         <el-header>
           <Header />
         </el-header>
-        <el-main>
-          <div class="main_card">
-            <router-view v-slot="{ Component, route }">
-              <transition appear name="fade-transform" mode="out-in">
-                <!-- <keep-alive> -->
-                <component :is="Component" :key="route.path" />
-                <!-- </keep-alive> -->
-              </transition>
-            </router-view>
-          </div>
-        </el-main>
+        <el-scrollbar>
+          <el-main>
+            <div class="main_card">
+              <router-view v-slot="{ Component, route }">
+                <transition appear name="fade-transform" mode="out-in">
+                  <!-- <keep-alive> -->
+                  <component :is="Component" :key="route.path" />
+                  <!-- </keep-alive> -->
+                </transition>
+              </router-view>
+            </div>
+          </el-main>
+        </el-scrollbar>
         <el-footer>
           <Footer />
         </el-footer>

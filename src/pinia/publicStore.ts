@@ -23,7 +23,6 @@ const usePublicStore = defineStore('public', {
     async fetchDeptTree() {
       const res = await getDeptTree()
       if (res?.code === 200) {
-        console.log(res)
         this.department = res.data.map((item) => {
           return JSON.parse(JSON.stringify(item).replace(/id/g, 'value'))
         })
