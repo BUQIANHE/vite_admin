@@ -1,12 +1,28 @@
 <script lang="ts" name="Theme" setup>
+import { useAppStore } from '@/pinia'
 import { useDark, useToggle } from '@vueuse/core'
-const isDark = useDark({
-  storageKey: 'vueuse-color-scheme',
-  selector: 'html',
-  valueDark: 'dark',
-  valueLight: 'light'
-})
+const isDark = useDark()
+// {
+//   storageKey: 'vueuse-color-scheme',
+//   selector: 'html',
+//   valueDark: 'dark',
+//   valueLight: 'light'
+// }
 const toggleDark = useToggle(isDark)
+
+const appStore = useAppStore()
+watch(
+  isDark,
+  (newVal) => {
+    appStore.golbalSettings.isDark = newVal
+    if (newVal) {
+      appStore.golbalSettings.theme = 'dark'
+    } else {
+      appStore.golbalSettings.theme = 'light'
+    }
+  },
+  { immediate: true }
+)
 </script>
 
 <template>
