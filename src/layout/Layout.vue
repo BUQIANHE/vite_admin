@@ -2,33 +2,32 @@
 import useAppStore from '@/pinia/appStore'
 
 const appStore = useAppStore()
-const { menuCollapse } = toRefs(appStore.golbalSettings)
+const golbalConfig = computed(() => appStore.golbalSettings)
 </script>
 
 <template>
   <div class="common-layout">
     <el-container>
-      <el-aside :width="menuCollapse ? '65px' : '240px'">
+      <el-aside :width="golbalConfig.menuCollapse ? '65px' : '240px'">
         <Aside />
       </el-aside>
       <el-container>
         <el-header>
           <Header />
         </el-header>
-        <el-scrollbar>
-          <el-main>
-            <div class="main_card">
-              <router-view v-slot="{ Component, route }">
-                <transition appear name="fade-transform" mode="out-in">
-                  <!-- <keep-alive> -->
-                  <component :is="Component" :key="route.path" />
-                  <!-- </keep-alive> -->
-                </transition>
-              </router-view>
-            </div>
-          </el-main>
-        </el-scrollbar>
-        <el-footer>
+        <Tabs v-if="golbalConfig.tabs" />
+        <el-main>
+          <div class="main_card">
+            <router-view v-slot="{ Component, route }">
+              <Transition appear name="fade-transform" mode="out-in">
+                <!-- <keep-alive> -->
+                <component :is="Component" :key="route.path" />
+                <!-- </keep-alive> -->
+              </Transition>
+            </router-view>
+          </div>
+        </el-main>
+        <el-footer v-if="golbalConfig.footer">
           <Footer />
         </el-footer>
       </el-container>
@@ -66,20 +65,11 @@ const { menuCollapse } = toRefs(appStore.golbalSettings)
 
   .el-main {
     background: var(--el-bg-color-page);
+    overflow: hidden;
 
     .main_card {
       width: 100%;
       height: 100%;
-      // overflow: auto;
-      // background: #fff;
-
-      // :deep(.el-scrollbar__view) {
-      //   height: inherit;
-      //   display: flex;
-      //   justify-content: space-between;
-      //   align-items: flex-end;
-      //   flex-direction: column;
-      // }
     }
   }
 
@@ -91,5 +81,21 @@ const { menuCollapse } = toRefs(appStore.golbalSettings)
   .is-vertical {
     align-self: normal;
   }
+}
+
+/* fade-transform */
+.fade-transform-leave-active,
+.fade-transform-enter-active {
+  transition: all 0.2s;
+}
+.fade-transform-enter-from {
+  opacity: 0;
+  transition: all 0.2s;
+  transform: translateX(30px);
+}
+.fade-transform-leave-to {
+  opacity: 0;
+  transition: all 0.2s;
+  transform: translateX(-30px);
 }
 </style>

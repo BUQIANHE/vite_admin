@@ -4,6 +4,7 @@ import piniaPersistConfig from '@/hooks/piniaPersist'
 
 const usePublicStore = defineStore('public', {
   state: (): API.PublicState => ({
+    tabs: [{ title: '首页', path: '/index', icon: 'Odometer', close: false }],
     department: [],
     menu: [],
     allMenuTree: [],

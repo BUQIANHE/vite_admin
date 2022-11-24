@@ -122,3 +122,19 @@ export const exportExecl = (data: any) => {
   // 撤销下载链接
   window.URL.revokeObjectURL(url)
 }
+
+/**
+ * 数组对象去重
+ * @param arr 去重的数组
+ * @returns 去重后的数组
+ */
+export const removeRepeat = (arr: any) => {
+  const obj: any = {}
+  let data = []
+  data = arr.reduce((item: any, next: any) => {
+    obj[next?.name] ? '' : (obj[next?.name] = true && item.push(next))
+    return item
+  }, [])
+
+  return data
+}

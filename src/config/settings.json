@@ -2,7 +2,11 @@
   "theme": "light",
   "themeColor": "#409EFF",
   "isDark": false,
+  "isGray": false,
+  "isWeak": false,
   "menuCollapse": false,
+  "breadcrumb": true,
+  "tabs": true,
   "footer": true,
   "menuFromServer": false
 }

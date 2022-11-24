@@ -1,23 +1,15 @@
 <script lang="ts" name="Menu" setup>
 import { useAppStore } from '@/pinia'
 
-const appStore = useAppStore()
 const route = useRoute()
+const appStore = useAppStore()
 
 const { themeColor, menuCollapse } = toRefs(appStore.golbalSettings)
 const list = appStore.menuList.filter((item) => item?.alwaysShow) as API.MenuListItem[]
 
-const activeMenu = ref<string>('/home')
-
-/**
- * 1. 判断当前路由是否在左侧菜单里面
- * 2. 判断有没有重定向
- */
-activeMenu.value = JSON.stringify(list).includes(route.path)
-  ? route.path !== '/index'
-    ? route.path
-    : '/home'
-  : ''
+const activeMenu = computed((): string => {
+  return route.path === '/index' ? '/home' : route.path
+})
 </script>
 
 <template>
